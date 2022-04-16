@@ -76,8 +76,9 @@ def request_bungie_user(bungiename, authorization):
             headers_=headers,
             body=json.dumps(body)).content)
 
+    user = {}
     for r in response['Response']['searchResults']:
-        if str(r['bungieGlobalDisplayNameCode']) == bungieSuffix:
+        if r['bungieGlobalDisplayNameCode'] == int(bungieSuffix):
             user = r
 
     return user
