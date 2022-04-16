@@ -10,7 +10,7 @@ parser.add_argument("-d", "--discord", help = "Discord Unique ID")
 args = vars(parser.parse_args())
 
 bungiename = args['bungie']
-discordID = args['discord']
+discordID:str = args['discord']
 
 ## Load Authorization ##
 authPath = pathlib.Path(__file__).resolve(
@@ -23,7 +23,7 @@ with authPath.open() as f:
 ## Request User Info ##
 new_user = bapi.request_bungie_user(bungiename=bungiename, authorization=authDict)
 
-user_data = {
+user_data:dict[str, str] = {
         "discord_id": discordID,
         "destiny_membership_id" : new_user['destinyMemberships'][0]['membershipId'],
         "destiny_membership_type" : str(new_user['destinyMemberships'][0]['membershipType']),
@@ -41,3 +41,4 @@ users.append(user_data)
 with memberDataPath.open('w') as f:
     json.dump(users, f)
     f.close()
+

@@ -47,11 +47,11 @@ with responsePath.open('w') as f:
     responsePath = json.dump(adaDict, f)
 
 ## Pull Hashes and Translate ##
-adaHashList = list()
+adaHashList:list[dict[str,str]] = list()
 for i in adaDict['Response']['sales']['data']:
     adaHashList.append(adaDict['Response']['sales']['data'][i]['itemHash'])
 
-adaModList = list()
+adaModList:list[dict[str,str]] = list()
 for i in adaHashList:
     if itemDefsDict[str(i)]['itemType'] == 19:
         modInfo = {
