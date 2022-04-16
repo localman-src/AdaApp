@@ -72,8 +72,7 @@ def request_bungie_user(bungiename: str, authorization: dict[str, str]) -> userd
     }
 
     body = {
-        "displayNamePrefix": bungiePrefix,
-        "a": "b"
+        "displayNamePrefix": bungiePrefix
     }
 
     response = json.loads(
