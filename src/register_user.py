@@ -3,6 +3,8 @@ import json
 import pathlib
 import argparse
 
+rootDir = pathlib.Path(__file__).resolve().parent.parent
+
 ## Handle Command Line Arguments
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("-b", "--bungie", help="Bungie Name 'ABCD#1234'")
@@ -13,9 +15,7 @@ bungiename = args['bungie']
 discordID:str = args['discord']
 
 ## Load Authorization ##
-authPath = pathlib.Path(__file__).resolve(
-).parent.parent.joinpath('config', 'auth.json')
-
+authPath = rootDir.joinpath('config', 'auth.json')
 with authPath.open() as f:
     authDict = json.loads(f.read())
     f.close()
@@ -31,8 +31,7 @@ user_data:dict[str, str] = {
     }
 
 ## Write User Information to JSON file ##
-memberDataPath = pathlib.Path(__file__).resolve(
-).parent.parent.joinpath('output', 'memberData.json')
+memberDataPath = rootDir.joinpath('output', 'memberData.json')
 
 with memberDataPath.open() as f:
     users = json.load(f)
@@ -41,4 +40,3 @@ users.append(user_data)
 with memberDataPath.open('w') as f:
     json.dump(users, f)
     f.close()
-
