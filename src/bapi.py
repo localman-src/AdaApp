@@ -90,6 +90,6 @@ def request_user_collections(user, authorization):
         "X-API-KEY": authorization["X-API-KEY"]
     }
     
-    endpoint = "/Destiny2/" + str(memberType) + "/Profile/" + str(memberID) + "/"
+    endpoint = f'/Destiny2/{memberType}/Profile/{memberID}/'
 
     return get_bapi(endpoint=endpoint, headers_=headers, querystring={'components': '800'})
