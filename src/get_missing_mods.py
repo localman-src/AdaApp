@@ -35,7 +35,7 @@ for u in userList:
 for s in saleList:
     s['ping_list'] = list()
     for u in userList:
-        if (userList[0]['collections'][str(s['collections_hash'])]['state'] % 2) == 0:
+        if (userList[0]['collections'][str(s['collections_hash'])]['state'] % 2) == 1:
             s['ping_list'].append(u['discord_id'])
             u['discord_id']
 
