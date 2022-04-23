@@ -80,10 +80,11 @@ def request_bungie_user(bungiename: str, authorization: dict[str, str]) -> userd
             endpoint=endpoint,
             headers_=headers,
             body=json.dumps(body)).content)
+
     user = userdata({})
-    for r in response['Response']['searchResults']:
-        if r['bungieGlobalDisplayNameCode'] == int(bungieSuffix):
-            user = r
+    for i in response['Response']['searchResults']:
+        if i['bungieGlobalDisplayNameCode'] == int(bungieSuffix):
+            user = i
 
     return user
 
